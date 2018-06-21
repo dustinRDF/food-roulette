@@ -14,7 +14,7 @@ const port = process.env.PORT || config.LOCAL_PORT;
 mongoose.connect( config.dbPath + config.dbName );
 
 // On connection
-mongoose.connection.on( 'connected', () => {
+mongoose.connection.on( 'connected', ( ) => {
     console.log( 'Connected to database ' + config.dbName );
 } );
 
@@ -24,12 +24,12 @@ mongoose.connection.on( 'error', ( err ) => {
 } );
 
 // Initialize the app
-const app = express();
+const app = express( );
 
 
 // Middleware
-app.use( cors() );
-app.use( bodyParser.json() );
+app.use( cors( ) );
+app.use( bodyParser.json( ) );
 
 // Set static folder
 app.use( express.static( path.join( __dirname, 'public' ) ) );
@@ -43,6 +43,6 @@ app.get( '/', ( req, res ) => {
 } );
 
 // Start server
-app.listen( port, () => {
+app.listen( port, ( ) => {
     console.log( 'Server started on ' + port );
 } );
